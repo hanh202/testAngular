@@ -1,0 +1,41 @@
+<div class="add-product">
+  <h2>Add new Product</h2>
+  <hr>
+
+  <div class="form">
+    <div class="alert alert-danger" role="alert" *ngIf="submitted && !formValue.valid">
+      Please complete all mandatory fields marked with a
+      <strong>*</strong>
+    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formValue">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Input" id="name" required formControlName="txtName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="number" matInput placeholder="Price" id="price" required formControlName="txtPrice">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Image" required formControlName="sltImage">
+            <mat-option *ngFor="let img of imageUrls" [value]="img">
+              {{img.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Category" required formControlName="sltCategory" multiple>
+            <mat-option *ngFor="let category of category" [value]="category">
+              {{category}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button mat-raised-button color="primary">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>

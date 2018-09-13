@@ -1,0 +1,23 @@
+<div class="product">
+  <div class="header">
+    <ul>
+      <li (click)="getAll()" [class.active]="activeClass==='all'">All</li>
+      <li (click)="filterMale('male')" [class.active]="activeClass==='male'">Male</li>
+      <li (click)="filterFemale('female')" [class.active]="activeClass==='female'">Female</li>
+    </ul>
+  </div>
+  <hr>
+  <div class="item-frame row m-0">
+    <ng-container *ngFor="let value of arr">
+      <div class="item col-md-3 col-sm-6">
+        <div class="img">
+          <img [src]="value.imgUrl" alt="" width='100%' height='70%'>
+          <div class="add-cart" routerLink="/cart">Add to cart</div>
+        </div>
+        <h3>{{value.name}}</h3>
+        <p><strong>$ {{value.prime}}</strong></p>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
